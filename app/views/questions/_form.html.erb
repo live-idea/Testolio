@@ -1,5 +1,6 @@
 
   <div class="group">
+  	<%= error_messages_for :product %>
     <%= f.label :quest_text, t("activerecord.attributes.question.quest_text", :default => "Quest text"), :class => :label %>
     <%= f.text_field :quest_text, :class => 'text_field' %>
     <span class="description">Ex: a simple text</span>

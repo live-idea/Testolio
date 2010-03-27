@@ -1,8 +1,7 @@
-class AnswersController < ApplicationController
-  
+class AnswersController < ApplicationController  
   before_filter :load_parent
   def load_parent
-    @question = Question.find_by_id(params[:question_id])
+    @question = Test.questions.find_by_id(params[:question_id])
   end
   
   def index
@@ -14,8 +13,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # GET /answers/1
-  # GET /answers/1.xml
   def show
     @answer = @question.answer.find_by_id(params[:id])
     respond_to do |format|
@@ -24,8 +21,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # GET /answers/new
-  # GET /answers/new.xml
   def new
     @answer = @question.answer.new
 
@@ -35,15 +30,12 @@ class AnswersController < ApplicationController
     end
   end
 
-  # GET /answers/1/edit
   def edit
     @answer = Answer.find(params[:id])
   end
 
-  # POST /answers
-  # POST /answers.xml
   def create
-    @answer = Answer.new(params[:answer])
+    @answer = @question.answers.new(params[:answer])
 
     respond_to do |format|
       if @answer.save
@@ -57,8 +49,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # PUT /answers/1
-  # PUT /answers/1.xml
   def update
     @answer = Answer.find(params[:id])
 
@@ -74,8 +64,6 @@ class AnswersController < ApplicationController
     end
   end
 
-  # DELETE /answers/1
-  # DELETE /answers/1.xml
   def destroy
     @answer = Answer.find(params[:id])
     @answer.destroy
