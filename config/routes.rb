@@ -1,4 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
+<<<<<<< HEAD
+  map.resources :utests
+
+  map.resources :tests
+
+  map.resources :do_tests
+
+  map.resources :choise_variants
+
+=======
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"
   
@@ -12,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
       quest.resources :answers
     end
   end
+>>>>>>> 6b793162f67799e63f790cdf642a557a4e1dffb4
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action
