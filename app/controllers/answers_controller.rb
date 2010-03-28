@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController  
   before_filter :load_parent
   def load_parent
-    @question = Test.questions.find_by_id(params[:question_id])
+    @test = Test.find_by_id(params[:test_id])
+    @question = @test.questions.find_by_id(params[:question_id])
   end
   
   def index
@@ -15,6 +16,7 @@ class AnswersController < ApplicationController
 
   def show
     @answer = @question.answer.find_by_id(params[:id])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @answer }
@@ -32,6 +34,7 @@ class AnswersController < ApplicationController
 
   def edit
     @answer = Answer.find(params[:id])
+    render :layout => false    
   end
 
   def create
@@ -40,7 +43,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.save
         flash[:notice] = 'Answer was successfully created.'
-        format.html { redirect_to(@answer) }
+        format.html { redirect_to test_question_path(@test, @question) }
         format.xml  { render :xml => @answer, :status => :created, :location => @answer }
       else
         format.html { render :action => "new" }
@@ -55,7 +58,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
         flash[:notice] = 'Answer was successfully updated.'
-        format.html { redirect_to(@answer) }
+        format.html { render :partial=>"questions/answer", :locals=>{:answer => @answer} }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -65,12 +68,11 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    @answer = Answer.find(params[:id])
+    @answer = @question.answers.find_by_id(params[:id])
     @answer.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(answers_url) }
-      format.xml  { head :ok }
-    end
+    
+    render :update do |answer|
+      answer.visual_effect :fade, "answer_#{@answer.id}"
+    end    
   end
 end

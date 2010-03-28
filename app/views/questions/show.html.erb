@@ -16,19 +16,16 @@
       	<%= link_to "Edit", edit_test_question_path(@test, @question), :class => "button" %> 
         <%= link_to "Delete", test_question_path(@test, @question), :method => "delete", :class => "button", :confirm => "Are you sure?" %>
       </div> 
-	  <h3>Answers</h3>
-	  <% @question.answers.each do |answer| %>	
-	  	<ul>
-	  		<li><%= answer.body %></li>
-	  	</ul>		 
-      <% end %>	  
+	  <h3>Answers</h3> 
+	  <ol class="inner">
+		<% @question.answers.each do |answer| %>
+		<li id="answer_<%=answer.id%>" >
+	 	  <%= render :partial => "answer", :locals => {:answer => answer} %>	
+		  </li>  		 
+        <% end %>	
+      </ol>	 
 	  <h3>New answer</h3>
-	    <% form_for @answer, :url => test_question_answers_path(@test, @question) do |f| %>
-		  	<%= f.text_field :body %>			
-			<%= f.check_box :is_right %>
-			<%= f.hidden_field :question_id %>			
-			<%= submit_tag "Save" %>
-		  <% end %>
+	  <%= render :partial => "answer_form" %>  
     </div>
   </div>
 </div>

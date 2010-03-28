@@ -12,7 +12,7 @@
       <% form_for @question, :url => test_question_path(@test, @question), :html => { :class => :form } do |f| -%>
         <%= render :partial => "form", :locals => {:f => f} %>
       <% end -%>
-    </div>
+	</div>	
   </div>
 </div>
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
