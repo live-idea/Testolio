@@ -1,0 +1,4 @@
+<%= answer.body %> => <%= answer.is_right %>
+ 	<%= link_to_remote("Edit", :url => edit_test_question_answer_path(@test, @question, answer), :method=>:get, :update=>"answer_#{answer.id}") %> |
+	<%= link_to_remote("Delete", :url => test_question_answer_path(@test, @question, answer), :confirm => "Are you sure?", :method => :delete) %>			
+

@@ -1,0 +1,32 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", test_questions_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_test_question_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", test_question_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">      
+        <p>
+          <b><%= t("activerecord.attributes.question.quest_text", :default => t("activerecord.labels.quest_text", :default => "Quest text")) %>:</b>
+          <%= @question.quest_text %>
+        </p>
+      <div class="wat-cf">
+      	<%= link_to "Edit", edit_test_question_path(@test, @question), :class => "button" %> 
+        <%= link_to "Delete", test_question_path(@test, @question), :method => "delete", :class => "button", :confirm => "Are you sure?" %>
+      </div> 
+	  <h3>Answers</h3> 
+	  <ul class="inner">
+		<% @question.answers.each do |answer| %>
+		<li id="answer_<%=answer.id%>" >
+	 	  <%= render :partial => "answer", :locals => {:answer => answer} %>	
+		  </li>  		 
+        <% end %>	
+      </ul>	 
+	  <h3>New answer</h3>
+	  <%= render :partial => "answer_form" %>  
+    </div>
+  </div>
+</div>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

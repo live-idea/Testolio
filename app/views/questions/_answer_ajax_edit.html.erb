@@ -1,0 +1,7 @@
+<% remote_form_for @answer, :url => test_question_answer_path(@test, @question, @answer), :method => :put,
+   :update => "answer_#{@answer.id}"  do |f| %>
+	<%= f.text_field :body, :size => '90' %>			
+	<%= f.check_box :is_right %>  
+	<%= f.hidden_field :question_id %>			
+	<%= submit_tag "Save" %>
+<% end %>
