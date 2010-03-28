@@ -1,6 +1,4 @@
 class ResultTestsController < ApplicationController
-   # GET /utests
-  # GET /utests.xml
   def index
     @tests = Test.all
 
@@ -8,10 +6,6 @@ class ResultTestsController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @result_tests }
     end
-  end
-
-  def all
-    @tests = Test.all
   end
 
   def show

@@ -11,27 +11,27 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-					
-					<th>
-					<%= t("activerecord.attributes.test.name", :default => t("activerecord.labels.name", :default => "Name")) %>
-</th>
-					
-          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+		  <th>
+		  	<%= t("activerecord.attributes.test.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>					
+          <th><%= t("web-app-theme.created_at", :default => "Created at") %></th>
+		  <th>Amount of questions</th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @tests.each do |test| -%>
         <tr class="<%= cycle("odd", "even") %>">
           <td>
             <%= test.id %>
-          </td>
-					
-					<td>
-						<%= link_to test.name, test_path(test) %>
-					</td>
-					
-					<td>
+          </td>					
+		  <td>
+			<%= link_to test.name, test_path(test) %>
+		  </td>
+		  <td>
             <%= test.created_at %>
           </td>
+		  <td>
+		  	<%= test.questions.count %>
+		  </td>	
           <td class="last">
           	<%= link_to "Questions", test_questions_path(test) %> |
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", test_path(test) %> |
@@ -43,11 +43,9 @@
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
-        </div>
-        
+        </div>        
       </div>
     </div>
   </div>
 </div>
-
 <% content_for :sidebar, render(:partial => 'sidebar') -%>

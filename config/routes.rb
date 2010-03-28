@@ -1,12 +1,9 @@
-ActionController::Routing::Routes.draw do |map|
-
-
- 
+ActionController::Routing::Routes.draw do |map| 
   map.resources :result_tests, :collection => {:all=>:any}
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
   map.resource :user_session
-  #map.root :controller => "tests"
+  map.root :controller => "result_tests"
   map.resource :account, :controller => "users"
   map.resources :users
 
