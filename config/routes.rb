@@ -6,6 +6,12 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => "result_tests"
   map.resource :account, :controller => "users"
   map.resources :users
+  
+  map.resources :result_tests do |result|
+    result.resources :user_quetions do |question|
+      #question.resources :choice_variants
+    end
+  end
 
   map.resources :tests do |test|
     test.resources :questions do |quest|
