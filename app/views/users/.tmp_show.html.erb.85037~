@@ -1,0 +1,11 @@
+<p>
+  <b>Login:</b>
+  <%=h @user.username %>
+</p>
+ 
+<p>
+  <b>User Email:</b>
+  <%=h @user.email %>
+</p>
+ 
+<%= link_to 'Edit', edit_account_path %>
