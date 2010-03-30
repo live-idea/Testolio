@@ -1,0 +1,2 @@
+module ResultTestsHelper
+end

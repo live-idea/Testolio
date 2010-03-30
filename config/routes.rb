@@ -1,8 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :choicecariants
 
-  map.resources :utests, :collection => {:all=>:any}
-  
+
+ 
+  map.resources :result_tests, :collection => {:all=>:any}
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
   map.resource :user_session
