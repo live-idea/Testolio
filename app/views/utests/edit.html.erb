@@ -1,0 +1,12 @@
+<h1>Editing utest</h1>
+
+<% form_for(@utest) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @utest %> |
+<%= link_to 'Back', utests_path %>
