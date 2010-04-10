@@ -1,0 +1,7 @@
+<h2><%= @test.name %></h2>
+
+<% f.fields_for :questions do |q| %>
+  <h2><%= q.position %> <%= q.quest_text %></h2>
+<% end %>
+
+ 

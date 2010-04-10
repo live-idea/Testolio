@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map| 
+  
   map.resources :result_tests, :collection => {:all=>:any}
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
@@ -7,10 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
   
+  map.resources :user_quetions, :has_many => :choise_variants
+  
   map.resources :result_tests do |result|
-    result.resources :user_quetions do |question|
-      #question.resources :choice_variants
-    end
+    result.resources :user_quetions 
   end
 
   map.resources :tests do |test|

@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = @test.questions.new(params[:question])
-
+    @question.position = @test.questions.length + 1
     respond_to do |format|
       if @question.save
         flash[:notice] = 'Question was successfully created.'

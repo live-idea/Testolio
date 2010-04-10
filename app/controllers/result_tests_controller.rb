@@ -1,5 +1,11 @@
 class ResultTestsController < ApplicationController
   layout "front"
+  before_filter :load_parent
+  def load_parent
+    @result_test = ResultTest.find_by_id(params[:result_test_id])
+    @test = @result_test
+  end
+  
   def index
     @tests = Test.all
     respond_to do |format|
@@ -25,7 +31,13 @@ class ResultTestsController < ApplicationController
   
   def create
     @result_test = ResultTest.create(params[:result_test])
-    
+    @questions = @result_test.test.questions
+    @questions.each do |q|
+      @user_question = UserQuetion.new({:question => q, :result_test => @result_test})   
+      @user_question.save   
+    end 
+    @user_quetion = @questions.find(:first)
+    redirect_to(result_test_path(@result_test))
   end 
   
  end

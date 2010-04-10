@@ -1,4 +1,4 @@
-<h1><%=@test.name%></h1>
+<h1><%= @test.name %></h1>
 <% form_for @result_test, :url=>result_tests_path do |f| %>
 <%= f.hidden_field :test_id, :value=>@test.id %>
 <%= f.submit "Поройти тест" %>
