@@ -19,6 +19,13 @@ class ResultTestsController < ApplicationController
     @result_test = ResultTest.new
   end
 
+
+  def coretestid
+    @test= Test.find(params[:id])
+  end
+  
+end
+
   def show    
     @result_test = ResultTest.find(params[:id])
 
@@ -40,4 +47,5 @@ class ResultTestsController < ApplicationController
     redirect_to(result_test_path(@result_test))
   end 
   
- end
+
+

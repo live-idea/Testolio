@@ -1,0 +1,9 @@
+<h2> You are passing <%= @test.name %></h2>
+<h3>This test has <%= @test.questions.count %> questions</h3>
+
+<% @questions.each do |q| %>
+	<p><%= q.quest_text %><br></p>
+<% end %>
+
+
+

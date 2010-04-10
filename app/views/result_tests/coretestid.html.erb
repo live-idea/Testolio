@@ -1,0 +1,23 @@
+
+
+<%= "coretestid.html" %>
+
+<div class="block">
+  <div class="secondary-navigation">
+  </div>
+
+  <div class="content">
+    <h2 class="title"><%=  @test.name  %>Test Questions</h2>
+    <ul>
+      <% @test.questions.each do |question| %>
+        <li>
+          <h2 ><%= question.quest_text  %>?</h2>
+          <ul>
+            <% question.answers.each do |answer| %>
+              <li><h2><%= answer.body  %></h2></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+
