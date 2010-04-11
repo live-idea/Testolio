@@ -1,7 +1,17 @@
-<h2><%= @test.name %></h2>
-
-<% f.fields_for :questions do |q| %>
-  <h2><%= q.position %> <%= q.quest_text %></h2>
+<h2><%= @result_test.test.name %></h2>
+<% form_for @result_test, :url=>result_test_path(@result_test) do |f| %>
+	<% f.fields_for :user_quetions do |q| %>
+		<h2><%= q.object.question.quest_text %></h2>
+		<% q.fields_for :choise_variants do |a| %>
+			<ul>
+				<li>
+					<%= a.check_box :_destroy, {}, "0", "1" %>
+					<%= a.object.answer.body %>
+				</li>				
+			</ul>
+		<% end %>	
+	<% end %>
+	<%= f.submit "Результати тесту" %>
 <% end %>
 
  

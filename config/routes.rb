@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-ActionController::Routing::Routes.draw do |map| 
-  
-  map.resources :result_tests, :collection => {:all=>:any}, :member=>{:coretestid=>:get}
+ActionController::Routing::Routes.draw do |map|   
+  map.resources :result_tests, :collection => {:all=>:any}, :member=>{:result=>:get}
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
   map.resource :user_session
