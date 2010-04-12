@@ -1,14 +1,22 @@
+
 ActionController::Routing::Routes.draw do |map|
 
 
  
   map.resources :result_tests, :collection => {:all=>:any}, :member=>{:coretestid=>:get}
+
   map.login "login", :controller => "user_sessions", :action => "new"
   map.logout "logout", :controller => "user_sessions", :action => "destroy"  
   map.resource :user_session
-  #map.root :controller => "tests"
+  map.root :controller => "result_tests"
   map.resource :account, :controller => "users"
   map.resources :users
+  
+  map.resources :result_tests do |result|
+    result.resources :user_quetions do |question|
+      #question.resources :choice_variants
+    end
+  end
 
   map.resources :tests do |test|
     test.resources :questions do |quest|
