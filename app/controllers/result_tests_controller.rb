@@ -14,5 +14,8 @@ class ResultTestsController < ApplicationController
     @tests = Test.all
   end
 
+  def coretestid
+    @test= Test.find(params[:id])
+  end
   
 end
