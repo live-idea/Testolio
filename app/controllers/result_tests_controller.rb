@@ -14,12 +14,5 @@ class ResultTestsController < ApplicationController
     @tests = Test.all
   end
 
-  def show
-    @result_test = ResultTest.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @result_test }
-    end
-  end
+  
 end
